@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import axios from "axios";
 import EventPage from "./pages/EventPage/EventPage";
+import "antd/dist/antd.css";
 
 class App extends React.Component {
   state = {
