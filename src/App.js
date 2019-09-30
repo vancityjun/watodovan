@@ -1,8 +1,9 @@
 import React from "react";
 import "./App.css";
+import "antd/dist/antd.css";
 import axios from "axios";
 import EventPage from "./pages/EventPage/EventPage";
-import "antd/dist/antd.css";
+import EventCard from "./Component/EvenCard/EventCard";
 
 class App extends React.Component {
   state = {
@@ -20,25 +21,43 @@ class App extends React.Component {
         )
       ])
       .then(
-        axios.spread((data, categoryData) => {
-          const { events } = data;
-          if (events && events.length > 0) {
-            this.setState({ eventData: events });
+        axios.spread((eventData, categoryData) => {
+          if (eventData.data.events && eventData.data.events.length > 0) {
+            this.setState({ eventData: eventData.data.events });
           }
-          const { categories } = categoryData;
-          if (categories && categories.length > 0) {
-            this.setState({ categoryData: categories });
+          if (
+            categoryData.data.categories &&
+            categoryData.data.categories.length > 0
+          ) {
+            this.setState({
+              ...this.state,
+              categoryData: categoryData.data.categories
+            });
           }
-          console.log("categoryData:", categoryData);
-          console.log("data:", data);
+          console.log("categoryData:", this.state.categoryData);
+          console.log("eventData:", this.state.eventData);
         })
       );
   }
-
   render() {
+    const { eventData, categoryData } = this.state;
+
+    const eventCards = eventData.map((event, index) => {
+      const image = event.logo === null ? "/no_image.png" : event.logo.url;
+      return (
+        <EventCard
+          key={index}
+          cover={image}
+          title={event.name.text}
+          body={event.description.text}
+          startTime={event.start.utc}
+          summary={event.summary}
+        />
+      );
+    });
     return (
       <div className="App">
-        <EventPage />
+        <EventPage eventCards={eventCards} />
       </div>
     );
   }

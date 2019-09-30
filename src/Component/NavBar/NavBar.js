@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Menu, Input } from "antd";
-
+import { Menu, Input, DatePicker } from "antd";
+import Selection from "../Selection/Selection";
 class NavBar extends Component {
   render() {
     return (
@@ -11,9 +11,15 @@ class NavBar extends Component {
         <Menu.Item>
           <Input.Search placeholder="Search Event" />
         </Menu.Item>
-        <Menu.Item></Menu.Item>
-        <Menu.Item></Menu.Item>
-        <Menu.Item></Menu.Item>
+        <Menu.Item>
+          <DatePicker />
+        </Menu.Item>
+        <Menu.Item>
+          <Selection />
+        </Menu.Item>
+        <Menu.Item>
+          <Selection />
+        </Menu.Item>
         <Menu.Item></Menu.Item>
       </Menu>
     );
