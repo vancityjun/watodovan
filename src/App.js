@@ -22,11 +22,11 @@ class App extends React.Component {
       ])
       .then(
         axios.spread((eventData, categoryData) => {
-          const events = eventData.data.events;
+          const { events } = eventData.data;
           if (events && events.length > 0) {
             this.setState({ eventData: events });
           }
-          const categories = categoryData.data.categories;
+          const { categories } = categoryData.data;
           if (categories && categories.length > 0) {
             this.setState({
               ...this.state,
