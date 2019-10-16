@@ -4,31 +4,32 @@ import $ from "jquery";
 import "./Feature.scss";
 
 class Feature extends Component {
-  style = {
-    background:
-      "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" +
-      require("../img/event1.jpg") + //change images
-      ") no-repeat center",
-    backgroundSize: "cover"
-  };
+  slideLocation = ["left", "center", "right"];
   item() {
     let feature = [];
     for (let i = 0; i < 3; i++) {
       feature.push(
-        <div className={"featureItem item" + i}>
-          <div>
-            <div className="featureInfo">
-              {/* title */}
-              <h3>Amazing Scavenger Hunt Adventure</h3>
-              {/* description */}
-              <div className="featureText">
-                Turn Vancouver into a giant game board with this fun scavenger
-                hunt adventure. Combine the excitement of the Amazing Race with
-                a three-hour
+        <div
+          className={"slide slide-" + this.slideLocation[i]}
+          data-active-class={"slide-" + this.slideLocation[i] + "-open"}
+        >
+          <div className="slide-wrapper">
+            <div className="post">
+              <div className="post-wrapper">
+                <h2 className="post-title">
+                  Do pariatur et cillum do ipsum pariatur exercitation.
+                </h2>
+                <p className="post-excerpt">
+                  Dolor ad ipsum dolor occaecat dolor laboris ut velit. Pariatur
+                  ex sint quis amet.
+                </p>
               </div>
-              <Button ghost size="large" className="featureButton">
-                View event
-              </Button>
+            </div>
+            <div className="background-image-wrapper">
+              <img
+                className="background-image"
+                src="http://www.ox.ac.uk/sites/files/oxford/styles/ow_medium_feature/public/field/field_image_main/shutterstock_450561199.jpg?itok=NL6qBaam"
+              />
             </div>
           </div>
         </div>
@@ -36,26 +37,23 @@ class Feature extends Component {
     }
     return feature;
   }
-  componentDidMount() {
-    const featureOpen = () => {
-      $(".item2").addClass("active");
-    };
-    featureOpen();
-    $(".item").on("mouseover", () => {
-      $(this).addClass("active");
-      $(this)
-        .siblings()
-        .removeClass("active");
-      $(".item").hasClass("active")
-        ? $(this)
-            .children(".featureInfo")
-            .fadeIn(600)
-        : $(this)
-            .children(".featureInfo")
-            .fadeOut(600);
-    });
-  }
   render() {
+    const wrapper = document.querySelector(".featureWrapper");
+    const slides = [...document.querySelectorAll(".slide")];
+    const active_classes = [
+      "slide-left-open",
+      "slide-center-open",
+      "slide-right-open"
+    ];
+
+    slides.forEach(slide => {
+      slide.addEventListener("mouseenter", e => {
+        wrapper.classList.remove(...active_classes);
+        let add_classes = ["slide-open", slide.dataset.activeClass];
+        wrapper.classList.add(...add_classes);
+      });
+    });
+
     return (
       <div id="featureWrapper" className="featureWrapper">
         {this.item()}

@@ -6,7 +6,11 @@ class NavBar extends Component {
     return (
       <Menu mode="horizontal">
         <Menu.Item>
-          <img src={require("../../asset/watodo-logo.svg")} alt="watodo logo" />
+          <img
+            class="logo"
+            src={require("../../asset/watodo-logo.svg")}
+            alt="watodo logo"
+          />
         </Menu.Item>
         <Menu.Item>
           <Input.Search placeholder="Search Event" />

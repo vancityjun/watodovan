@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import "antd/dist/antd.css";
 import axios from "axios";
 import EventPage from "./pages/EventPage/EventPage";

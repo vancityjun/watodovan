@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Layout, Row } from "antd";
 import NavBar from "../../Component/NavBar/NavBar";
+import Feature from "../../Component/Feature/Feature";
 
 class EventPage extends Component {
   render() {
@@ -10,7 +11,7 @@ class EventPage extends Component {
         <Layout className="">
           <NavBar />
           <Layout.Content>
-            {/* featured */}
+            <Feature />
             <Row>{eventCards}</Row>
           </Layout.Content>
           <Layout.Footer>
