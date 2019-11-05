@@ -12,7 +12,7 @@ class EventPage extends Component {
           <NavBar />
           <Layout.Content>
             <Feature />
-            <Row>{eventCards}</Row>
+            {eventCards}
           </Layout.Content>
           <Layout.Footer>
             WaToDo Vancouver ©2019 Created by WTD Van

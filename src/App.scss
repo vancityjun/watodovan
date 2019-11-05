@@ -1,0 +1,21 @@
+$mobile_breakpoint: 320px;
+$tablet_breakpoint: 600px;
+$desktop_breakpoint: 1024px;
+
+.eventRow {
+  .eventCard {
+    width: 100%;
+    @media (min-width: $tablet_breakpoint) {
+      width: 50%;
+      float: left;
+    }
+    @media (min-width: $desktop_breakpoint) {
+      width: 25%;
+    }
+  }
+}
+.ant-drawer {
+  @media (min-width: $tablet_breakpoint) {
+    width: 40% !important;
+  }
+}

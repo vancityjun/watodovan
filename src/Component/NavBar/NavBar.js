@@ -7,7 +7,7 @@ class NavBar extends Component {
       <Menu mode="horizontal">
         <Menu.Item>
           <img
-            class="logo"
+            className="logo"
             src={require("../../asset/watodo-logo.svg")}
             alt="watodo logo"
           />

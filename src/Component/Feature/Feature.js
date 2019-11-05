@@ -10,6 +10,7 @@ class Feature extends Component {
     for (let i = 0; i < 3; i++) {
       feature.push(
         <div
+          key={i}
           className={"slide slide-" + this.slideLocation[i]}
           data-active-class={"slide-" + this.slideLocation[i] + "-open"}
         >

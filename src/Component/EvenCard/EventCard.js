@@ -1,17 +1,41 @@
 import React, { Component } from "react";
 import { Col, Card, Tag } from "antd";
 import Countdown from "react-countdown-now";
+import EventDrawer from "../EventDrawer/EventDrawer";
 
 class EventCard extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isDrawerOpen: false
+    };
   }
+
+  booleanHandler = () => {
+    if (this.state.isDrawerOpen)
+      this.setState({
+        isDrawerOpen: false
+      });
+  };
+
+  drawerHandler = () => {
+    this.setState({ isDrawerOpen: true });
+  };
+
   render() {
     const { title, summary, cover, startTime, body } = this.props;
+    const coverImage = (
+      <img alt="title" src={cover} onClick={() => this.drawerHandler()} />
+    );
     return (
-      <Col span={6}>
-        <Card hoverable cover={<img alt={title} src={cover} />}>
+      <div className="eventRow">
+        <Card
+          className="eventCard"
+          hoverable
+          // cover={coverImage}
+          cover={<img alt={title} src={cover} />}
+          onClick={() => this.drawerHandler()}
+        >
           <Countdown
             date={new Date(startTime)}
             renderer={({ days, hours, minutes, seconds }) => (
@@ -23,8 +47,17 @@ class EventCard extends Component {
             )}
           />
           <Card.Meta title={title} description={summary} />
+          {this.state.isDrawerOpen ? (
+            <EventDrawer
+              booleanHandler={this.booleanHandler}
+              title={title}
+              cover={cover}
+              startTime={startTime}
+              body={body}
+            />
+          ) : null}
         </Card>
-      </Col>
+      </div>
     );
   }
 }

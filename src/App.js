@@ -10,14 +10,17 @@ class App extends React.Component {
     eventData: [],
     categoryData: []
   };
+  proxyurl = "https://cors-anywhere.herokuapp.com/";
   componentDidMount() {
     axios
       .all([
         axios.get(
-          "https://www.eventbriteapi.com/v3/events/search/?sort_by=date&location.address=Vancouver%2C+Canada&location.within=40km&token=KCQPMHOXUOJBGVFFKKUV"
+          this.proxyurl +
+            "https://www.eventbriteapi.com/v3/events/search/?sort_by=date&location.address=Vancouver%2C+Canada&location.within=40km&token=KCQPMHOXUOJBGVFFKKUV"
         ),
         axios.get(
-          "https://www.eventbriteapi.com/v3/categories/?token=KCQPMHOXUOJBGVFFKKUV"
+          this.proxyurl +
+            "https://www.eventbriteapi.com/v3/categories/?token=KCQPMHOXUOJBGVFFKKUV"
         )
       ])
       .then(
