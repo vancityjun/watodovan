@@ -8,7 +8,6 @@ class EventPage extends Component {
     const { eventCards } = this.props;
     return (
       <>
-<<<<<<< HEAD
         <div className="">
           <NavBar />
           <div>
@@ -17,18 +16,6 @@ class EventPage extends Component {
           </div>
           <div>WaToDo Vancouver ©2019 Created by WTD Van</div>
         </div>
-=======
-        <Layout className="">
-          <NavBar />
-          <Layout.Content>
-            <Feature />
-            {eventCards}
-          </Layout.Content>
-          <Layout.Footer>
-            WaToDo Vancouver ©2019 Created by WTD Van
-          </Layout.Footer>
-        </Layout>
->>>>>>> 7dbc2b0ef543c252038cda4ecaf7f61d24196eba
       </>
     );
   }

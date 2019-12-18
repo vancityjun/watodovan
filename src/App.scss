@@ -1,3 +1,4 @@
+@import "mixin";
 $mobile_breakpoint: 320px;
 $tablet_breakpoint: 600px;
 $desktop_breakpoint: 1024px;
@@ -5,21 +6,20 @@ $desktop_breakpoint: 1024px;
 .eventRow {
   .eventCard {
     width: 100%;
-    @media (min-width: $tablet_breakpoint) {
+    @include tablet {
       width: 50%;
       float: left;
     }
-    @media (min-width: $desktop_breakpoint) {
+    @include desktop {
       width: 25%;
     }
   }
 }
 .ant-drawer {
-  @media (min-width: $tablet_breakpoint) {
+  @include tablet {
     width: 40% !important;
   }
 }
-<<<<<<< HEAD
 .nav {
   display: flex;
   align-items: center;
@@ -34,5 +34,3 @@ $desktop_breakpoint: 1024px;
     margin: 0 5px;
   }
 }
-=======
->>>>>>> 7dbc2b0ef543c252038cda4ecaf7f61d24196eba
